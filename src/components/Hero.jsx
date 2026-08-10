@@ -99,18 +99,22 @@ export default function Hero({ profile, isLight }) {
               </div>
 
               <div className="flex items-center gap-6">
-                <a href={profile.socials.github} target="_blank" rel="noreferrer"
-                  className="p-3 rounded-full border transition-transform hover:scale-110"
-                  style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--text-secondary)' }}>
-                  <FaGithub size={20} />
-                </a>
-                <a href={profile.socials.linkedin} target="_blank" rel="noreferrer"
-                  className="p-3 rounded-full border transition-transform hover:scale-110"
-                  style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--text-secondary)' }}>
-                  <FaLinkedinIn size={20} />
-                </a>
-                {profile.socials.twitter && (
-                  <a href={profile.socials.twitter} target="_blank" rel="noreferrer"
+                {(profile.github || profile.socials?.github) && (
+                  <a href={profile.github || profile.socials?.github} target="_blank" rel="noreferrer"
+                    className="p-3 rounded-full border transition-transform hover:scale-110"
+                    style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--text-secondary)' }}>
+                    <FaGithub size={20} />
+                  </a>
+                )}
+                {(profile.linkedin || profile.socials?.linkedin) && (
+                  <a href={profile.linkedin || profile.socials?.linkedin} target="_blank" rel="noreferrer"
+                    className="p-3 rounded-full border transition-transform hover:scale-110"
+                    style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--text-secondary)' }}>
+                    <FaLinkedinIn size={20} />
+                  </a>
+                )}
+                {(profile.twitter || profile.socials?.twitter) && (
+                  <a href={profile.twitter || profile.socials?.twitter} target="_blank" rel="noreferrer"
                     className="p-3 rounded-full border transition-transform hover:scale-110"
                     style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--text-secondary)' }}>
                     <FaTwitter size={20} />
