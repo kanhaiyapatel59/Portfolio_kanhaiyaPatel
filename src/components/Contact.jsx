@@ -16,33 +16,60 @@ export default function Contact({ profile }) {
     setLoading(true);
 
     try {
-      // Use Web3Forms access key from env or fallback to Web3Forms default endpoint
-      const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || '8ca5c3db-24b9-4091-bfce-4a7b973eb0e9'; // Replace with your Web3Forms Access Key from web3forms.com
+      // 1. Check if Formspree endpoint or key is configured
+      const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_URL || import.meta.env.VITE_FORMSPREE_ENDPOINT;
+      const web3FormsKey = import.meta.env.VITE_WEB3FORMS_KEY || '8ca5c3db-24b9-4091-bfce-4a7b973eb0e9';
 
-      const formData = new FormData();
-      formData.append('access_key', accessKey);
-      formData.append('name', form.name);
-      formData.append('email', form.email);
-      formData.append('message', form.message);
-      formData.append('subject', `New Portfolio Message from ${form.name}`);
-      formData.append('from_name', 'Portfolio Contact Form');
+      let response;
 
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      });
+      if (formspreeEndpoint) {
+        // Submit via Formspree
+        response = await fetch(formspreeEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            message: form.message
+          })
+        });
 
-      const data = await response.json();
-
-      if (data.success) {
-        add("Message sent! I'll get back to you soon 🚀", 'success');
-        setForm({ name: '', email: '', message: '' });
+        if (response.ok) {
+          add("Message sent! I'll get back to you soon 🚀", 'success');
+          setForm({ name: '', email: '', message: '' });
+        } else {
+          const data = await response.json();
+          add(data.error || 'Failed to send message via Formspree.', 'error');
+        }
       } else {
-        add(data.message || 'Something went wrong. Please try again.', 'error');
+        // Submit via Web3Forms
+        const formData = new FormData();
+        formData.append('access_key', web3FormsKey);
+        formData.append('name', form.name);
+        formData.append('email', form.email);
+        formData.append('message', form.message);
+        formData.append('subject', `New Portfolio Message from ${form.name}`);
+
+        response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          add("Message sent! I'll get back to you soon 🚀", 'success');
+          setForm({ name: '', email: '', message: '' });
+        } else {
+          add(data.message || 'Something went wrong. Please try again.', 'error');
+        }
       }
     } catch (error) {
       console.error('Contact form submission error:', error);
-      add('Failed to send email. Please check your connection or contact directly via email.', 'error');
+      add('Failed to send email. Please check your connection or send an email directly.', 'error');
     } finally {
       setLoading(false);
     }
