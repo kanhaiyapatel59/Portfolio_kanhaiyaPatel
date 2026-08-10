@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
+import Background3D from './components/Background3D';
 import { useTheme } from './hooks/useTheme';
 
 export default function App() {
@@ -27,7 +28,8 @@ export default function App() {
     <>
       <Preloader />
       <CustomCursor />
-      <div className="min-h-screen overflow-x-hidden" style={{ background: 'var(--bg)', color: 'var(--text-primary)' }}>
+      <Background3D isLight={isLight} />
+      <div className="relative z-10 min-h-screen overflow-x-hidden" style={{ color: 'var(--text-primary)' }}>
         <Navbar name={profile.name} theme={theme} toggle={toggle} isLight={isLight} />
         <Hero profile={profile} isLight={isLight} />
         <About profile={profile} isLight={isLight} />
