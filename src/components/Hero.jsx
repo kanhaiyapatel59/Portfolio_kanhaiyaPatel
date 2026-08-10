@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download, MapPin } from 'lucide-react';
 import { FaGithub, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import ResumeModal from './ResumeModal';
-import FlipProfileCard from './FlipProfileCard';
 
 function ParticleCanvas({ isLight }) {
   const canvasRef = useRef(null);
@@ -65,6 +64,59 @@ function TypingText({ words }) {
 export default function Hero({ profile, isLight }) {
   const [resumeOpen, setResumeOpen] = useState(false);
 
+  function HeroTilt3D() {
+    const ref = useRef(null);
+    const shineRef = useRef(null);
+
+    const onMove = (e) => {
+      const el = ref.current; if (!el) return;
+      const { left, top, width, height } = el.getBoundingClientRect();
+      const x = (e.clientX - left) / width - 0.5;
+      const y = (e.clientY - top) / height - 0.5;
+      el.style.transform = `perspective(800px) rotateY(${x * 22}deg) rotateX(${-y * 22}deg) scale(1.04)`;
+      el.style.boxShadow = `${x * 24}px ${y * 24}px 60px rgba(0,229,255,0.35), 0 8px 40px rgba(124,58,237,0.3)`;
+      if (shineRef.current) {
+        const px = ((e.clientX - left) / width) * 100;
+        const py = ((e.clientY - top) / height) * 100;
+        shineRef.current.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(255,255,255,0.18) 0%, transparent 60%)`;
+        shineRef.current.style.opacity = '1';
+      }
+    };
+
+    const onLeave = () => {
+      const el = ref.current; if (!el) return;
+      el.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)';
+      el.style.boxShadow = '';
+      if (shineRef.current) shineRef.current.style.opacity = '0';
+    };
+
+    return (
+      <div
+        ref={ref}
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+        className="absolute inset-8 rounded-3xl glass-card overflow-hidden"
+        style={{ transition: 'transform 0.15s ease, box-shadow 0.15s ease', transformStyle: 'preserve-3d', cursor: 'default' }}
+      >
+        <img
+          src={profile.avatar}
+          alt={profile.name}
+          className="w-full h-full rounded-3xl"
+          style={{ objectFit: 'cover', objectPosition: 'top center', transform: 'translateZ(30px)', transformStyle: 'preserve-3d' }}
+        />
+        <div
+          ref={shineRef}
+          className="absolute inset-0 rounded-3xl pointer-events-none opacity-0 transition-opacity duration-200"
+          style={{ zIndex: 10 }}
+        />
+        <div
+          className="absolute inset-0 rounded-3xl pointer-events-none"
+          style={{ background: 'linear-gradient(135deg, rgba(0,229,255,0.08) 0%, transparent 60%)', transform: 'translateZ(40px)' }}
+        />
+      </div>
+    );
+  }
+
   return (
     <>
       <section id="home" className="relative min-h-screen flex items-center overflow-hidden section-padding pt-20">
@@ -85,7 +137,7 @@ export default function Hero({ profile, isLight }) {
               </h1>
 
               <p className="text-lg md:text-xl mb-8 max-w-xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                {profile.bio}
+                {profile.heroDescription || profile.bio}
               </p>
 
               <div className="flex flex-wrap items-center gap-4 mb-10">
@@ -130,7 +182,7 @@ export default function Hero({ profile, isLight }) {
               className="relative flex items-center justify-center">
               <div className="relative w-[340px] h-[340px] md:w-[440px] md:h-[440px]">
                 <div className="absolute inset-0 rounded-full blur-3xl" style={{ background: 'linear-gradient(135deg, var(--orb-cyan), var(--orb-purple))' }} />
-                <FlipProfileCard avatarUrl={profile.avatar} name={profile.name} className="p-4" />
+                <HeroTilt3D />
               </div>
             </motion.div>
           </div>
