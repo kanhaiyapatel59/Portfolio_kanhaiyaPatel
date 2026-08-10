@@ -18,7 +18,7 @@ export default function Contact({ profile }) {
     try {
       // 1. Check if Formspree endpoint or key is configured
       const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_URL || import.meta.env.VITE_FORMSPREE_ENDPOINT;
-      const web3FormsKey = import.meta.env.VITE_WEB3FORMS_KEY || '8ca5c3db-24b9-4091-bfce-4a7b973eb0e9';
+      const web3FormsKey = import.meta.env.VITE_WEB3FORMS_KEY || '2a7452dc-2950-47b3-8194-14df2e502d2a';
 
       let response;
 
