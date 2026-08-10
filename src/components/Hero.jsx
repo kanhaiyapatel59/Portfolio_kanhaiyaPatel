@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download, MapPin } from 'lucide-react';
 import { FaGithub, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import ResumeModal from './ResumeModal';
+import FlipProfileCard from './FlipProfileCard';
 
 function ParticleCanvas({ isLight }) {
   const canvasRef = useRef(null);
@@ -64,61 +65,6 @@ function TypingText({ words }) {
 export default function Hero({ profile, isLight }) {
   const [resumeOpen, setResumeOpen] = useState(false);
 
-  function HeroTilt3D() {
-    const ref = useRef(null);
-    const shineRef = useRef(null);
-
-    const onMove = (e) => {
-      const el = ref.current; if (!el) return;
-      const { left, top, width, height } = el.getBoundingClientRect();
-      const x = (e.clientX - left) / width - 0.5;
-      const y = (e.clientY - top) / height - 0.5;
-      el.style.transform = `perspective(800px) rotateY(${x * 22}deg) rotateX(${-y * 22}deg) scale(1.04)`;
-      el.style.boxShadow = `${x * 24}px ${y * 24}px 60px rgba(0,229,255,0.35), 0 8px 40px rgba(124,58,237,0.3)`;
-      if (shineRef.current) {
-        const px = ((e.clientX - left) / width) * 100;
-        const py = ((e.clientY - top) / height) * 100;
-        shineRef.current.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(255,255,255,0.18) 0%, transparent 60%)`;
-        shineRef.current.style.opacity = '1';
-      }
-    };
-
-    const onLeave = () => {
-      const el = ref.current; if (!el) return;
-      el.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)';
-      el.style.boxShadow = '';
-      if (shineRef.current) shineRef.current.style.opacity = '0';
-    };
-
-    return (
-      <div
-        ref={ref}
-        onMouseMove={onMove}
-        onMouseLeave={onLeave}
-        className="absolute inset-8 rounded-3xl glass-card overflow-hidden"
-        style={{ transition: 'transform 0.15s ease, box-shadow 0.15s ease', transformStyle: 'preserve-3d', cursor: 'default' }}
-      >
-        <img
-          src={profile.avatar}
-          alt={profile.name}
-          className="w-full h-full rounded-3xl"
-          style={{ objectFit: 'cover', objectPosition: 'top center', transform: 'translateZ(30px)', transformStyle: 'preserve-3d' }}
-        />
-        {/* Cursor-tracked shine */}
-        <div
-          ref={shineRef}
-          className="absolute inset-0 rounded-3xl pointer-events-none opacity-0 transition-opacity duration-200"
-          style={{ zIndex: 10 }}
-        />
-        {/* Accent border glow */}
-        <div
-          className="absolute inset-0 rounded-3xl pointer-events-none"
-          style={{ background: 'linear-gradient(135deg, rgba(0,229,255,0.08) 0%, transparent 60%)', transform: 'translateZ(40px)' }}
-        />
-      </div>
-    );
-  }
-
   return (
     <>
       <section id="home" className="relative min-h-screen flex items-center overflow-hidden section-padding pt-20">
@@ -138,25 +84,38 @@ export default function Hero({ profile, isLight }) {
                 <TypingText words={profile.taglines} />
               </h1>
 
-              <p className="text-lg max-w-lg mb-8 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                {profile.heroDescription}
+              <p className="text-lg md:text-xl mb-8 max-w-xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                {profile.bio}
               </p>
 
-              <div className="flex flex-wrap gap-4 mb-8">
-                <a href="#projects" className="btn-primary inline-flex items-center gap-2">View My Work <ArrowRight size={18} /></a>
-                <button onClick={() => setResumeOpen(true)} className="btn-secondary inline-flex items-center gap-2">
-                  <Download size={18} /> Resume
+              <div className="flex flex-wrap items-center gap-4 mb-10">
+                <a href="#projects" className="btn-primary flex items-center gap-2">
+                  View Work <ArrowRight size={18} />
+                </a>
+
+                <button onClick={() => setResumeOpen(true)} className="btn-secondary flex items-center gap-2">
+                  <Download size={18} /> View Resume
                 </button>
               </div>
 
-              <div className="flex items-center gap-4">
-                {[{ href: profile.github, Icon: FaGithub }, { href: profile.linkedin, Icon: FaLinkedinIn }, { href: profile.twitter, Icon: FaTwitter }].map(({ href, Icon }) => (
-                  <a key={href} href={href} target="_blank" rel="noreferrer"
-                    className="p-2 rounded-lg transition-all hover:scale-110"
+              <div className="flex items-center gap-6">
+                <a href={profile.socials.github} target="_blank" rel="noreferrer"
+                  className="p-3 rounded-full border transition-transform hover:scale-110"
+                  style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--text-secondary)' }}>
+                  <FaGithub size={20} />
+                </a>
+                <a href={profile.socials.linkedin} target="_blank" rel="noreferrer"
+                  className="p-3 rounded-full border transition-transform hover:scale-110"
+                  style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--text-secondary)' }}>
+                  <FaLinkedinIn size={20} />
+                </a>
+                {profile.socials.twitter && (
+                  <a href={profile.socials.twitter} target="_blank" rel="noreferrer"
+                    className="p-3 rounded-full border transition-transform hover:scale-110"
                     style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--text-secondary)' }}>
-                    <Icon size={20} />
+                    <FaTwitter size={20} />
                   </a>
-                ))}
+                )}
                 <span className="flex items-center gap-2 text-sm ml-2" style={{ color: 'var(--text-muted)' }}>
                   <MapPin size={14} /> {profile.location}
                 </span>
@@ -167,7 +126,7 @@ export default function Hero({ profile, isLight }) {
               className="relative flex items-center justify-center">
               <div className="relative w-[340px] h-[340px] md:w-[440px] md:h-[440px]">
                 <div className="absolute inset-0 rounded-full blur-3xl" style={{ background: 'linear-gradient(135deg, var(--orb-cyan), var(--orb-purple))' }} />
-                <HeroTilt3D />
+                <FlipProfileCard avatarUrl={profile.avatar} name={profile.name} className="p-4" />
               </div>
             </motion.div>
           </div>

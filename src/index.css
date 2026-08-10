@@ -253,6 +253,23 @@ input::placeholder, textarea::placeholder { color: var(--input-placeholder); opa
   box-shadow: 0 2px 16px rgba(0,0,0,0.06);
 }
 
+/* ─────────────────────────────────────────
+   HAND WAVE ANIMATION
+───────────────────────────────────────── */
+@keyframes wave-hand {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(24deg); }
+  40% { transform: rotate(-16deg); }
+  60% { transform: rotate(20deg); }
+  80% { transform: rotate(-8deg); }
+}
+
+.animate-wave {
+  display: inline-block;
+  transform-origin: 75% 75%;
+  animation: wave-hand 1.4s infinite ease-in-out;
+}
+
 [data-theme="light"] .glass {
   background: rgba(255,255,255,0.90);
   border: 1px solid rgba(0,0,0,0.10);
