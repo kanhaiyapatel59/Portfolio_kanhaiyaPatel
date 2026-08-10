@@ -15,17 +15,37 @@ export default function Contact({ profile }) {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate async send — wire to EmailJS / Formspree / your API here
-    await new Promise((r) => setTimeout(r, 1200));
+    try {
+      // Use Web3Forms access key from env or fallback to Web3Forms default endpoint
+      const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || '8ca5c3db-24b9-4091-bfce-4a7b973eb0e9'; // Replace with your Web3Forms Access Key from web3forms.com
 
-    const success = true; // flip to false to test error toast
-    if (success) {
-      add("Message sent! I'll get back to you soon 🚀", 'success');
-      setForm({ name: '', email: '', message: '' });
-    } else {
-      add('Something went wrong. Please try again.', 'error');
+      const formData = new FormData();
+      formData.append('access_key', accessKey);
+      formData.append('name', form.name);
+      formData.append('email', form.email);
+      formData.append('message', form.message);
+      formData.append('subject', `New Portfolio Message from ${form.name}`);
+      formData.append('from_name', 'Portfolio Contact Form');
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        add("Message sent! I'll get back to you soon 🚀", 'success');
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        add(data.message || 'Something went wrong. Please try again.', 'error');
+      }
+    } catch (error) {
+      console.error('Contact form submission error:', error);
+      add('Failed to send email. Please check your connection or contact directly via email.', 'error');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -81,15 +101,21 @@ export default function Contact({ profile }) {
               </div>
 
               <div className="flex gap-3">
-                <a href={profile.github} target="_blank" rel="noreferrer" className="p-3 glass-card rounded-xl text-gray-400 hover:text-[#00E5FF] hover:border-[#00E5FF]/20 transition-all">
-                  <FaGithub size={20} />
-                </a>
-                <a href={profile.linkedin} target="_blank" rel="noreferrer" className="p-3 glass-card rounded-xl text-gray-400 hover:text-[#00E5FF] hover:border-[#00E5FF]/20 transition-all">
-                  <FaLinkedinIn size={20} />
-                </a>
-                <a href={profile.twitter} target="_blank" rel="noreferrer" className="p-3 glass-card rounded-xl text-gray-400 hover:text-[#00E5FF] hover:border-[#00E5FF]/20 transition-all">
-                  <FaTwitter size={20} />
-                </a>
+                {(profile.github || profile.socials?.github) && (
+                  <a href={profile.github || profile.socials?.github} target="_blank" rel="noreferrer" className="p-3 glass-card rounded-xl text-gray-400 hover:text-[#00E5FF] hover:border-[#00E5FF]/20 transition-all">
+                    <FaGithub size={20} />
+                  </a>
+                )}
+                {(profile.linkedin || profile.socials?.linkedin) && (
+                  <a href={profile.linkedin || profile.socials?.linkedin} target="_blank" rel="noreferrer" className="p-3 glass-card rounded-xl text-gray-400 hover:text-[#00E5FF] hover:border-[#00E5FF]/20 transition-all">
+                    <FaLinkedinIn size={20} />
+                  </a>
+                )}
+                {(profile.twitter || profile.socials?.twitter) && (
+                  <a href={profile.twitter || profile.socials?.twitter} target="_blank" rel="noreferrer" className="p-3 glass-card rounded-xl text-gray-400 hover:text-[#00E5FF] hover:border-[#00E5FF]/20 transition-all">
+                    <FaTwitter size={20} />
+                  </a>
+                )}
               </div>
             </motion.div>
 
