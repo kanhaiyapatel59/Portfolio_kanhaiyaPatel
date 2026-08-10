@@ -119,7 +119,7 @@ export default function Hero({ profile, isLight }) {
 
   return (
     <>
-      <section id="home" className="relative min-h-[110vh] flex items-center overflow-hidden section-padding pt-28 pb-24 md:pt-36 md:pb-28">
+      <section id="home" className="relative min-h-[125vh] flex items-center overflow-hidden section-padding pt-36 pb-32 md:pt-48 md:pb-44">
         <ParticleCanvas isLight={isLight} />
         <div className="absolute w-[600px] h-[600px] rounded-full blur-[120px] pointer-events-none -top-32 -left-32 z-0" style={{ background: 'var(--orb-cyan)' }} />
         <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none z-0" style={{ background: 'var(--orb-purple)' }} />
@@ -180,7 +180,7 @@ export default function Hero({ profile, isLight }) {
 
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.1 }}
               className="relative flex items-center justify-center">
-              <div className="relative w-[360px] h-[360px] md:w-[480px] md:h-[480px] lg:w-[500px] lg:h-[500px]">
+              <div className="relative w-[380px] h-[380px] md:w-[520px] md:h-[520px] lg:w-[540px] lg:h-[540px]">
                 <div className="absolute inset-0 rounded-full blur-3xl" style={{ background: 'linear-gradient(135deg, var(--orb-cyan), var(--orb-purple))' }} />
                 <HeroTilt3D />
               </div>
