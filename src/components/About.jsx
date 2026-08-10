@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Download } from 'lucide-react';
 import SectionHeading from './SectionHeading';
+import GitHubStats from './GitHubStats';
 
 function Tilt3D({ children, className }) {
   const ref = useRef(null);
@@ -45,7 +46,7 @@ export default function About({ profile }) {
         <SectionHeading eyebrow="About Me" title="" large />
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative aspect-square max-w-md mx-auto">
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative aspect-square max-w-md mx-auto w-full">
             <div className="absolute inset-0 rounded-3xl blur-2xl" style={{ background: 'linear-gradient(135deg, var(--orb-cyan), var(--orb-purple))' }} />
             <Tilt3D className="glass-card h-full overflow-hidden rounded-3xl">
               <img src={profile.avatar} alt={profile.name} className="w-full h-full rounded-3xl" style={{ objectFit: 'cover', objectPosition: 'top center', transform: 'translateZ(30px)', transformStyle: 'preserve-3d' }} />
@@ -74,6 +75,11 @@ export default function About({ profile }) {
               <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-secondary inline-flex items-center gap-2"><Download size={16} /> Download CV</a>
             </div>
           </motion.div>
+        </div>
+
+        {/* Live GitHub API Metrics */}
+        <div className="max-w-4xl mx-auto mt-12">
+          <GitHubStats username="kanhaiyapatel59" />
         </div>
       </div>
     </section>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Terminal as TerminalIcon } from 'lucide-react';
 
 const navLinks = ['About', 'Skills', 'Projects', 'Experience', 'Education', 'Contact'];
 
-export default function Navbar({ name, toggle, isLight }) {
+export default function Navbar({ name, toggle, isLight, onOpenTerminal }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -74,6 +74,17 @@ export default function Navbar({ name, toggle, isLight }) {
           </nav>
 
           <div className="flex items-center gap-2">
+            {/* Terminal CLI toggle */}
+            <button
+              onClick={onOpenTerminal}
+              title="Open Terminal CLI (`)"
+              className="p-2 rounded-lg transition-all duration-200 hover:scale-110 flex items-center gap-1 text-xs font-mono font-bold"
+              style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--accent)' }}
+            >
+              <TerminalIcon size={16} />
+              <span className="hidden sm:inline">&gt;_</span>
+            </button>
+
             {/* Theme toggle */}
             <button
               onClick={toggle}
