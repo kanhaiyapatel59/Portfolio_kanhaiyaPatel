@@ -119,13 +119,13 @@ export default function Hero({ profile, isLight }) {
 
   return (
     <>
-      <section id="home" className="relative min-h-screen flex items-center overflow-hidden section-padding pt-20">
+      <section id="home" className="relative min-h-[110vh] flex items-center overflow-hidden section-padding pt-28 pb-24 md:pt-36 md:pb-28">
         <ParticleCanvas isLight={isLight} />
         <div className="absolute w-[600px] h-[600px] rounded-full blur-[120px] pointer-events-none -top-32 -left-32 z-0" style={{ background: 'var(--orb-cyan)' }} />
         <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none z-0" style={{ background: 'var(--orb-purple)' }} />
 
         <div className="container mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center my-auto">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
                 className="text-lg font-medium mb-4" style={{ color: 'var(--accent)' }}>
@@ -180,7 +180,7 @@ export default function Hero({ profile, isLight }) {
 
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.1 }}
               className="relative flex items-center justify-center">
-              <div className="relative w-[340px] h-[340px] md:w-[440px] md:h-[440px]">
+              <div className="relative w-[360px] h-[360px] md:w-[480px] md:h-[480px] lg:w-[500px] lg:h-[500px]">
                 <div className="absolute inset-0 rounded-full blur-3xl" style={{ background: 'linear-gradient(135deg, var(--orb-cyan), var(--orb-purple))' }} />
                 <HeroTilt3D />
               </div>
