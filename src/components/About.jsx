@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Download } from 'lucide-react';
 import SectionHeading from './SectionHeading';
-import GitHubStats from './GitHubStats';
 
 function Tilt3D({ children, className }) {
   const ref = useRef(null);
@@ -75,11 +74,6 @@ export default function About({ profile }) {
               <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="btn-secondary inline-flex items-center gap-2"><Download size={16} /> Download CV</a>
             </div>
           </motion.div>
-        </div>
-
-        {/* Live GitHub API Metrics */}
-        <div className="max-w-4xl mx-auto mt-12">
-          <GitHubStats username="kanhaiyapatel59" />
         </div>
       </div>
     </section>
