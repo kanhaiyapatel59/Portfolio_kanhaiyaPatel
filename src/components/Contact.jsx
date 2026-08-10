@@ -50,8 +50,10 @@ export default function Contact({ profile }) {
         formData.append('access_key', web3FormsKey);
         formData.append('name', form.name);
         formData.append('email', form.email);
+        formData.append('replyto', form.email);
+        formData.append('from_name', `${form.name} via Portfolio`);
+        formData.append('subject', `Portfolio Contact: ${form.name}`);
         formData.append('message', form.message);
-        formData.append('subject', `New Portfolio Message from ${form.name}`);
 
         response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
