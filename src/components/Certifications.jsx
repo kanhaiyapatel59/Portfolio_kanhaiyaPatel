@@ -1,8 +1,19 @@
-import { motion } from 'framer-motion';
-import { BadgeCheck } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { BadgeCheck, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import SectionHeading from './SectionHeading';
+import Tilt3D from './Tilt3D';
 
 export default function Certifications({ certifications }) {
+  const sorted = [...certifications].reverse();
+  const [lightbox, setLightbox] = useState(null);
+  const withImages = sorted.map((_, i) => i).filter((i) => sorted[i].image);
+
+  const moveLightbox = (dir) => {
+    const pos = withImages.indexOf(lightbox);
+    setLightbox(withImages[(pos + dir + withImages.length) % withImages.length]);
+  };
+
   return (
     <section id="certifications" className="py-24 section-padding relative">
       <div className="container mx-auto">
@@ -13,32 +24,100 @@ export default function Certifications({ certifications }) {
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
-          {certifications.map((item, index) => (
+          {sorted.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: index * 0.08 }}
-              whileHover={{ y: -5 }}
-              className="glass-card glow-border p-5"
             >
-              {item.image ? (
-                <img src={item.image} alt={item.title} className="w-full h-24 object-contain rounded-lg mb-4" />
-              ) : (
-                <div className="w-10 h-10 rounded-xl bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center mb-4">
-                  <BadgeCheck size={20} className="text-[#00E5FF]" />
+              <Tilt3D
+                className="glass-card glow-border p-5 h-full flex flex-col"
+                glowColor="rgba(0,229,255,0.22)"
+              >
+                {/* Image — top Z layer */}
+                <div className="mb-4" style={{ transform: 'translateZ(24px)' }}>
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      onClick={() => setLightbox(index)}
+                      className="w-full h-24 object-contain rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                      style={{ filter: 'drop-shadow(0 4px 12px rgba(0,229,255,0.2))' }}
+                    />
+                  ) : (
+                    <div
+                      className="w-full h-24 rounded-lg flex items-center justify-center"
+                      style={{ border: '1px dashed var(--card-border)', background: 'var(--glass-bg)' }}
+                    >
+                      <BadgeCheck size={24} style={{ color: 'var(--accent)' }} />
+                    </div>
+                  )}
                 </div>
-              )}
-              <h3 className="text-sm font-semibold mb-1 leading-snug">{item.title}</h3>
-              <p className="text-[#7C3AED] text-xs font-medium mb-3">{item.provider}</p>
-              <span className="text-xs px-2 py-0.5 rounded-full border border-[#00E5FF]/20 bg-[#00E5FF]/5 text-[#00E5FF]">
-                {item.year}
-              </span>
+
+                {/* Title — mid Z */}
+                <div style={{ transform: 'translateZ(14px)' }}>
+                  <h3 className="text-sm font-semibold mb-1 leading-snug" style={{ color: 'var(--text-primary)' }}>
+                    {item.title}
+                  </h3>
+                  <p className="text-xs font-medium mb-3" style={{ color: 'var(--accent-secondary)' }}>
+                    {item.provider}
+                  </p>
+                </div>
+
+                {/* Badge — base Z */}
+                <div className="mt-auto" style={{ transform: 'translateZ(8px)' }}>
+                  <span
+                    className="text-xs px-2 py-0.5 rounded-full"
+                    style={{
+                      border: '1px solid color-mix(in srgb, var(--accent) 30%, transparent)',
+                      background: 'color-mix(in srgb, var(--accent) 8%, transparent)',
+                      color: 'var(--accent)',
+                    }}
+                  >
+                    {item.year}
+                  </span>
+                </div>
+              </Tilt3D>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {lightbox !== null && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setLightbox(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }}
+              className="relative max-w-2xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img src={sorted[lightbox].image} alt="" className="w-full rounded-2xl shadow-2xl" />
+              <p className="text-center text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
+                {sorted[lightbox].title} — {sorted[lightbox].provider}
+              </p>
+              <button onClick={() => setLightbox(null)} className="absolute -top-3 -right-3 p-1.5 rounded-full border" style={{ background: 'var(--card-bg)', borderColor: 'var(--card-border)', color: 'var(--text-secondary)' }}>
+                <X size={16} />
+              </button>
+              {withImages.length > 1 && (
+                <>
+                  <button onClick={() => moveLightbox(-1)} className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full border" style={{ background: 'var(--card-bg)', borderColor: 'var(--card-border)', color: 'var(--text-secondary)' }}>
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button onClick={() => moveLightbox(1)} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full border" style={{ background: 'var(--card-bg)', borderColor: 'var(--card-border)', color: 'var(--text-secondary)' }}>
+                    <ChevronRight size={18} />
+                  </button>
+                </>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -1,39 +1,8 @@
-import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import SectionHeading from './SectionHeading';
-
-function TiltCard({ children, className }) {
-  const ref = useRef(null);
-
-  const handleMouseMove = (e) => {
-    const card = ref.current;
-    if (!card) return;
-    const { left, top, width, height } = card.getBoundingClientRect();
-    const x = (e.clientX - left) / width - 0.5;
-    const y = (e.clientY - top) / height - 0.5;
-    card.style.transform = `perspective(800px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) scale(1.02)`;
-  };
-
-  const handleMouseLeave = () => {
-    if (ref.current) {
-      ref.current.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)';
-    }
-  };
-
-  return (
-    <div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className={className}
-      style={{ transition: 'transform 0.15s ease', transformStyle: 'preserve-3d' }}
-    >
-      {children}
-    </div>
-  );
-}
+import Tilt3D from './Tilt3D';
 
 export default function Projects({ projects }) {
   return (
@@ -45,78 +14,94 @@ export default function Projects({ projects }) {
           description="A selection of projects that showcase my skills and problem-solving approach."
         />
 
-        <div className="space-y-8">
+        <div className="grid sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              key={project.id + index}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.08 }}
             >
-              <TiltCard className="glass-card glow-border overflow-hidden group">
-                <div className="grid lg:grid-cols-[2fr_3fr] gap-0">
-                  {/* Image */}
-                  <div className="relative h-[250px] lg:h-auto overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#111]/80 hidden lg:block" />
+              <Tilt3D
+                className="glass-card glow-border overflow-hidden flex flex-col h-full"
+                glowColor="rgba(0,229,255,0.25)"
+              >
+                {/* Image floats back */}
+                <div
+                  className="relative h-44 overflow-hidden"
+                  style={{ transform: 'translateZ(0px)', transformStyle: 'preserve-3d' }}
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                </div>
+
+                {/* Content pops forward */}
+                <div
+                  className="p-5 flex flex-col flex-1"
+                  style={{ transform: 'translateZ(20px)', transformStyle: 'preserve-3d' }}
+                >
+                  <h3
+                    className="text-base font-semibold mb-2 transition-colors"
+                    style={{ color: 'var(--text-primary)' }}
+                  >
+                    {project.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
+                    {project.description}
+                  </p>
+
+                  {/* Tech tags float even more forward */}
+                  <div
+                    className="flex flex-wrap gap-1.5 mb-4"
+                    style={{ transform: 'translateZ(8px)' }}
+                  >
+                    {project.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 text-xs rounded-full"
+                        style={{
+                          border: '1px solid var(--accent)',
+                          background: 'color-mix(in srgb, var(--accent) 10%, transparent)',
+                          color: 'var(--accent)',
+                          opacity: 0.85,
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
 
-                  {/* Content */}
-                  <div className="p-6 lg:p-8 flex flex-col justify-center">
-                    <h3 className="text-xl font-semibold mb-3 group-hover:text-[#00E5FF] transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-400 leading-relaxed mb-5">{project.description}</p>
-
-                    {/* Highlights */}
-                    <ul className="space-y-2 mb-6">
-                      {project.highlights.map((point, i) => (
-                        <li key={i} className="flex items-start gap-3 text-sm text-gray-400">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] mt-2 shrink-0" />
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Tech stack */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 text-xs rounded-full border border-[#00E5FF]/30 bg-[#00E5FF]/10 text-[#00E5FF]"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Links */}
-                    <div className="flex gap-3">
+                  {/* Buttons at the top Z layer */}
+                  <div
+                    className="flex gap-2 mt-auto"
+                    style={{ transform: 'translateZ(14px)' }}
+                  >
+                    {project.liveUrl && project.liveUrl !== 'https://example.com' && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 btn-primary text-sm px-4 py-2"
+                        className="inline-flex items-center gap-1.5 btn-primary text-xs px-3 py-1.5"
                       >
-                        <ExternalLink size={15} /> Live Demo
+                        <ExternalLink size={13} /> Live Demo
                       </a>
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 btn-secondary text-sm px-4 py-2"
-                      >
-                        <FaGithub size={15} /> GitHub
-                      </a>
-                    </div>
+                    )}
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 btn-secondary text-xs px-3 py-1.5"
+                    >
+                      <FaGithub size={13} /> GitHub
+                    </a>
                   </div>
                 </div>
-              </TiltCard>
+              </Tilt3D>
             </motion.div>
           ))}
         </div>

@@ -1,3 +1,24 @@
+// ── Profile avatar — replace src/assets/avatar.png with your actual photo, keep the same filename ──
+import avatar from '../assets/avatar.png';
+
+// ── Certification images ──
+import certDataEngineering from '../assets/cert-data-engineering.png';
+import certDesignThinkingNPTEL from '../assets/cert-design-thinking-nptel.png';
+import certCreateathon from '../assets/cert-createathon.jpeg';
+import certIBMSkillbuild from '../assets/cert-ibm-skillbuild.png';
+import certMyGovCybersecurity from '../assets/cert-mygov-cybersecurity.jpg';
+import certJavaUdemy from '../assets/cert-java-udemy.png';
+import certOracleJava from '../assets/cert-oracle-java.png';
+import certSQLAdvanced from '../assets/cert-sql-advanced.png';
+import certInternship from '../assets/cert-internship-better-tomorrow.jpg';
+import certSoftwareEngineering from '../assets/cert-software-engineering.png';
+import certUdemyCpp from '../assets/cert-udemy-cpp.png';
+
+// ── Achievement images ──
+import achievementFreshathon from '../assets/achievement-freshathon.png';
+import achievementMiniProjectExpo from '../assets/achievementMiniProjectExpo.jpeg';
+const achievementAIMLHackathon = null;
+
 const portfolioData = {
   profile: {
     name: 'Kanhaiya Patel',
@@ -5,31 +26,28 @@ const portfolioData = {
     taglines: ['Full Stack Developer', 'Problem Solver'],
     heroBadge: 'Open to opportunities',
     heroDescription:
-      'I’m a passionate software developer who enjoys building modern, user-friendly, and reliable digital solutions. I turn complex ideas into simple, efficient, and scalable applications. With experience in frontend development, backend systems, I create high-quality products that are both functional and impactful.',
+      "I'm a passionate software developer who enjoys building modern, user-friendly, and reliable digital solutions. I turn complex ideas into simple, efficient, and scalable applications. With experience in frontend development, backend systems, I create high-quality products that are both functional and impactful.",
     aboutTitle: 'About Me',
     aboutDescription:
-      "I'm a full stack developer with a strong foundation in modern JavaScript ecosystems. I love building products that are fast, accessible, and delightful to use.",
+      "I'm a Full Stack Developer specializing in building scalable, high-performance web applications. I bridge the gap between clean UI and robust backend systems, turning complex requirements into elegant, maintainable solutions.",
     aboutBody:
-      'With hands-on experience across the full stack, I focus on writing maintainable code, building intuitive interfaces, and delivering real business value. I thrive in collaborative environments and enjoy taking ownership from idea to deployment.',
-    stats: [
-  
-      
-    ],
+      'I bring hands-on experience across the entire development lifecycle — from architecting APIs and databases to crafting responsive interfaces. I take ownership of what I build, write code that lasts, and consistently deliver products that create real impact.',
+    stats: [],
     contactTitle: "Let's build something great together.",
     contactDescription:
       "Whether you have a project in mind, a role to fill, or just want to connect — my inbox is always open.",
-    email: 'kanhaiya383@gmail.com',
+    email: 'kanhaiyapatel383@gmail.com',
     phone: '+91 9153965327',
     location: 'India • Coimbatore TamilNadu',
     github: 'https://github.com/kanhaiyapatel59',
     linkedin: 'https://www.linkedin.com/in/kanhaiya-patel-1490b6324/',
-    resumeUrl: 'https://example.com/resume.pdf',
-    avatar: 'https://scontent.fcjb9-1.fna.fbcdn.net/v/t39.30808-6/704507843_1831074844913678_5963416252897731389_n.jpg?stp=dst-jpg_tt6&cstp=mx1361x1371&ctp=s1361x1371&_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=y62kSNG1PRcQ7kNvwFV7Pna&_nc_oc=Adqx7M3DHHoc-KSjCAAJIcoEizqxJ4ysKQGWZm0nwNNO7gSXzH6yVn4bN3ilB5CztwM&_nc_zt=23&_nc_ht=scontent.fcjb9-1.fna&_nc_gid=chcYtUI6OdOIztTm8jFfqA&_nc_ss=7b2a8&oh=00_AQCEXnuhH9E18L3saHWfcQgviuOTyoldICecj2AXzi8asw&oe=6A5FEB5C',
+    twitter: 'https://x.com/Kanhaiyapatel59',
+    resumeUrl: '/resume.pdf',
+    avatar,
   },
 
   skills: [
     { id: 's1', name: 'JavaScript', icon: 'SiJavascript', color: '#F7DF1E', category: 'Language' },
-    { id: 's2', name: 'TypeScript', icon: 'SiTypescript', color: '#3178C6', category: 'Language' },
     { id: 's3', name: 'React', icon: 'SiReact', color: '#61DAFB', category: 'Frontend' },
     { id: 's4', name: 'Next.js', icon: 'SiNextdotjs', color: '#ffffff', category: 'Frontend' },
     { id: 's5', name: 'Tailwind CSS', icon: 'SiTailwindcss', color: '#06B6D4', category: 'Styling' },
@@ -47,7 +65,7 @@ const portfolioData = {
       id: 'p1',
       title: 'Online Food Ordering System',
       description: 'A full-stack food delivery platform with secure authentication and real-time order management.',
-      techStack: ['React', 'Node.js', 'Express.js' , 'JWT Authentication' , 'MongoDB'],
+      techStack: ['React', 'Node.js', 'Express.js', 'JWT Authentication', 'MongoDB'],
       highlights: [
         'Built a full-stack food ordering application with secure JWT authentication and role-based user access.',
         'Developed real-time order tracking and an admin dashboard to manage users, orders, and analytics.',
@@ -68,7 +86,7 @@ const portfolioData = {
         'Built an admin panel to manage emergency requests, ambulance availability, and user records efficiently.',
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/campus-ambulance-tracker',
-      liveUrl: 'https://example.com',
+      liveUrl: '',
       image: 'https://trinetrawireless.com/wp-content/uploads/2017/12/Emergency-Medical-Services.jpg',
     },
     {
@@ -82,62 +100,130 @@ const portfolioData = {
         'Built a scalable backend with REST APIs and database integration for reliable data handling.',
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/Event-Registration',
-      liveUrl: 'https://example.com',
+      liveUrl: '',
       image: 'https://cdn.marketing123.123formbuilder.com/wp-content/uploads/2023/11/event-reg-form-templates.webp',
     },
     {
-  id: 'p3',
-  title: 'MediRoute AI',
-  description: 'An AI-powered emergency healthcare platform that helps users quickly locate nearby hospitals, find optimal routes, and receive intelligent medical assistance during emergencies.',
-  techStack: [
-    'React.js',
-    'Node.js',
-    'Express.js',
-    'MongoDB',
-    'Google Maps API',
-    'Gemini AI'
-  ],
-  highlights: [
-    'Developed an AI-powered platform to locate nearby hospitals and provide the fastest emergency route.',
-    'Integrated Google Maps API for real-time navigation, distance calculation, and location-based hospital search.',
-    'Implemented secure user authentication, emergency request management, and a scalable REST API backend with MongoDB.',
-    'Integrated Gemini AI to provide intelligent medical guidance, symptom assistance, and emergency support.',
-    'Designed a responsive and user-friendly interface optimized for both desktop and mobile devices.'
-  ],
-  githubUrl: 'https://github.com/kanhaiyapatel59/MediRoute-ai',
-  liveUrl: '',
-  image: 'https://img.magnific.com/free-vector/flat-design-medical-landing-page_23-2149164615.jpg?semt=ais_hybrid&w=740&q=80',
-},
-
+      id: 'p6',
+      title: 'AI Disaster Command Center',
+      description: 'An enterprise-grade multi-agent AI system for disaster response and emergency management, featuring 6 specialized AI agents that work together to detect, predict, and coordinate rescue operations during floods and natural disasters.',
+      techStack: ['React.js', 'FastAPI', 'Python', 'LangGraph', 'Groq API', 'MongoDB', 'Tailwind CSS', 'Leaflet'],
+      highlights: [
+        'Built 6 specialized AI agents (Weather, Detection, Prediction, Resource, Rescue, Communication) that collaborate to provide comprehensive disaster response.',
+        'Developed Commander Agent using LangGraph that orchestrates all agents with real-time execution animations and status tracking.',
+        'Created enterprise-grade dashboard with dark theme, glassmorphism, interactive maps, and real-time agent status monitoring.',
+        'Integrated image analysis for drone/CCTV footage with simulated AI detection of people, flood areas, and severity assessment.',
+        'Implemented MongoDB for persistent storage of all incident analyses with complete history tracking and reporting.',
+        'Built professional incident report generation with executive summaries, recommended actions, and multi-channel alerts (SMS, Email, Control Room).',
+      ],
+      githubUrl: 'https://github.com/kanhaiyapatel59/disaster-response-ai',
+      liveUrl: '',
+      image: 'https://domesticpreparedness.com/wp-content/uploads/2026/07/AdobeStock_1925196678-WEB.jpg',
+    },
+    {
+      id: 'p5',
+      title: 'CrimeLens: AI-Powered Crime Intelligence & Investigation Platform',
+      description: 'An enterprise-grade AI-powered crime intelligence platform that transforms scattered police records into actionable insights through interactive dashboards, geospatial heatmaps, criminal network analysis, and AI-driven predictive analytics for proactive policing.',
+      techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Python', 'Groq AI', 'Leaflet', 'Chart.js', 'Tailwind CSS'],
+      highlights: [
+        'Built unified crime intelligence platform eliminating Excel-based data silos for Karnataka Police.',
+        'Developed geospatial heatmaps and criminal network visualization for hotspot detection and relationship mapping.',
+        'Integrated Groq AI-powered conversational assistant for natural language crime analysis.',
+        'Implemented predictive risk scoring using Machine Learning models (XGBoost, Scikit-learn).',
+        'Deployed multi-agent system (Crime Pattern Agent, Patrol Recommendation Agent) with FastAPI.',
+        'Built role-based access control (Admin, SCRB, District, Station Officer) for secure data governance.',
+        'Deployed on Zoho Catalyst cloud platform with Docker containerization.',
+        'Created responsive dashboard with real-time charts, maps, and exportable reports.',
+      ],
+      githubUrl: 'https://github.com/kanhaiyapatel59/CrimeLens',
+      liveUrl: 'https://crimelens-frontend-kqiohtrf.onslate.in',
+      image: 'https://www.c-sint.in/home-img.png',
+    },
+    {
+      id: 'p4',
+      title: 'MediRoute AI',
+      description: 'An AI-powered emergency healthcare platform that helps users quickly locate nearby hospitals, find optimal routes, and receive intelligent medical assistance during emergencies.',
+      techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Google Maps API', 'Gemini AI'],
+      highlights: [
+        'Developed an AI-powered platform to locate nearby hospitals and provide the fastest emergency route.',
+        'Integrated Google Maps API for real-time navigation, distance calculation, and location-based hospital search.',
+        'Implemented secure user authentication, emergency request management, and a scalable REST API backend with MongoDB.',
+        'Integrated Gemini AI to provide intelligent medical guidance, symptom assistance, and emergency support.',
+        'Designed a responsive and user-friendly interface optimized for both desktop and mobile devices.',
+      ],
+      githubUrl: 'https://github.com/kanhaiyapatel59/MediRoute-ai',
+      liveUrl: '',
+      image: 'https://img.magnific.com/free-vector/flat-design-medical-landing-page_23-2149164615.jpg?semt=ais_hybrid&w=740&q=80',
+    },
   ],
 
   timeline: [
     {
+      id: 't2',
+      type: 'INTERNSHIP',
+      title: 'Full Stack Developer Intern',
+      organization: 'Global Intern •  MERN',
+      period: '2026',
+      description: [
+        'Built an AI-powered crime intelligence platform using MERN stack.',
+        'Developed crime analytics dashboards, maps, and investigation insights.',
+        'Integrated AI agents for crime pattern detection and patrol recommendations.',
+        'Implemented REST APIs, MongoDB, JWT authentication, and LangGraph.',
+      ],
+    },
+    {
       id: 't1',
-      type: 'INTENRNSHIP',
+      type: 'INTERNSHIP',
       title: 'Full Stack Developer',
-      organization: 'Bettter Tomorrow',
-      period: '2025 ',
-      description: [ 'Built a MERN stack food delivery platform with secure authentication and a responsive user interface.',
-'Implemented JWT authentication and real-time order tracking for a seamless user experience.',
-'Developed an admin dashboard to manage users, orders, and platform operations efficiently.',
-'Optimized REST APIs and MongoDB queries to deliver fast, reliable application performance.' ],
+      organization: 'Better Tomorrow MERN',
+      period: '2025',
+      description: [
+        'Built a MERN stack food delivery platform with secure authentication and a responsive user interface.',
+        'Implemented JWT authentication and real-time order tracking for a seamless user experience.',
+        'Developed an admin dashboard to manage users, orders, and platform operations efficiently.',
+        'Optimized REST APIs and MongoDB queries to deliver fast, reliable application performance.',
+      ],
     },
   ],
 
+  education: [
+    {
+      id: 'e1',
+      degree: 'B.E. Computer Science & Engineering',
+      institution: 'Sri Eshwar College of Engineering',
+      location: 'Coimbatore, Tamil Nadu',
+      period: '2024 – 2028',
+      grade: 'CGPA: 8.28 Upto 4th Semester',
+      description: 'full stack development, data structures, algorithms, and AI/ML. Active participant in hackathons and technical events.',
+    },
+    {
+      id: 'e2',
+      degree: 'Higher Secondary (12th) — Science',
+      institution: 'Om National Academy +2',
+      location: 'Birgunj Parsa, Nepal',
+      period: '2023 – 2024',
+      grade: 'GPA 3.32',
+    },
+  ],
 
   certifications: [
-    { id: 'c1', title: 'Introduction to Data Engineering and Big Data', provider: 'GUVI/HCL', year: '2026', image: '' },
-    { id: 'c2', title: 'NPTEL course “Design Thinking – A Primer”', provider: 'IIT Madras ', year: '2026', image: 'https://media.licdn.com/dms/image/v2/D5622AQGGw2URYwLhjA/feedshare-image-high-res/B56Z5oOgx_JIAU-/0/1779865095827?e=1784764800&v=beta&t=oVxfMwtMTvbuiKPMXUppnQkqsFyFg-9638g03tlPcQE' },
-    { id: 'c3', title: 'MongoDB for JavaScript Developers', provider: 'MongoDB University', year: '2023', image: '' },
-    { id: 'c4', title: 'AWS Cloud Practitioner', provider: 'Amazon Web Services', year: '2024', image: '' },
+    { id: 'c1', title: 'Full Stack Developer Internship', provider: 'Better Tomorrow', year: '2025', image: certInternship },
+    { id: 'c2', title: 'IBM SkillBuild – Software Development', provider: 'IBM', year: '2024', image: certIBMSkillbuild },
+    { id: 'c3', title: 'Introduction to Data Engineering and Big Data', provider: 'GUVI / HCL', year: '2026', image: certDataEngineering },
+    { id: 'c4', title: 'Design Thinking – A Primer', provider: 'NPTEL / IIT Madras', year: '2026', image: certDesignThinkingNPTEL },
+    { id: 'c5', title: 'Createathon 2024', provider: 'Sri Eshwar College of Engineering', year: '2024', image: certCreateathon },
+    { id: 'c6', title: 'Oracle Java Foundations', provider: 'Oracle', year: '2024', image: certOracleJava },
+    { id: 'c7', title: 'MyGov Cybersecurity Awareness', provider: 'MyGov India', year: '2024', image: certMyGovCybersecurity },
+    { id: 'c8', title: 'SQL Advanced Certificate', provider: 'HackerRank', year: '2024', image: certSQLAdvanced },
+    { id: 'c9', title: 'Java – The Complete Java Developer Course', provider: 'Udemy', year: '2024', image: certJavaUdemy },
+    { id: 'c10', title: 'Software Engineering', provider: 'Sri Eshwar College of Engineering', year: '2024', image: certSoftwareEngineering },
+    { id: 'c11', title: 'C / C++ Programming', provider: 'Udemy', year: '2024', image: certUdemyCpp },
   ],
-  
 
   achievements: [
-    { id: 'a1', title: 'Freshathon Winner 🏆', detail: '3rd place  at FRSHathon 3.0  with 70+ participants.', image: '' },
-    { id: 'a2', title: '1st Prize -Mini Project EXPO Winner 🏆', detail: 'Awarded First Prize for developing an innovative, real-world solution that demonstrated technical excellence, creativity, and practical impact.', image: '' },
-    { id: 'a3', title: 'First Runner-AIML Hackathon', detail: 'Secured Second Place by developing an innovative AI/ML solution to address a real-world problem through teamwork and technical expertise.', image: '' },
+    { id: 'a1', title: 'Freshathon Winner 🏆', detail: '3rd place at FRSHathon 3.0 with 70+ participants.', image: achievementFreshathon },
+    { id: 'a2', title: '1st Prize - Mini Project EXPO Winner 🏆', detail: 'Awarded First Prize for developing an innovative, real-world solution that demonstrated technical excellence, creativity, and practical impact.', image: achievementMiniProjectExpo },
+    { id: 'a3', title: 'First Runner-Up — AIML Hackathon', detail: 'Secured Second Place by developing an innovative AI/ML solution to address a real-world problem through teamwork and technical expertise.', image: achievementAIMLHackathon },
   ],
 };
 

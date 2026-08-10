@@ -101,37 +101,54 @@ export default function Contact({ profile }) {
               onSubmit={handleSubmit}
               className="glass-card p-8 space-y-5"
             >
+              {[{ label: 'Your Name', type: 'text', key: 'name', placeholder: 'John Doe' },
+                { label: 'Email Address', type: 'email', key: 'email', placeholder: 'john@example.com' }].map(({ label, type, key, placeholder }) => (
+                <div key={key}>
+                  <label className="block text-sm mb-2" style={{ color: 'var(--text-secondary)' }}>{label}</label>
+                  <input
+                    type={type}
+                    required
+                    value={form[key]}
+                    onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                    placeholder={placeholder}
+                    style={{
+                      width: '100%',
+                      background: 'var(--input-bg)',
+                      border: '1px solid var(--input-border)',
+                      borderRadius: '0.75rem',
+                      padding: '0.75rem 1rem',
+                      fontSize: '0.875rem',
+                      color: 'var(--input-text)',
+                      outline: 'none',
+                      transition: 'border-color 0.2s, box-shadow 0.2s',
+                    }}
+                    onFocus={(e) => { e.target.style.borderColor = 'var(--accent)'; e.target.style.boxShadow = '0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent)'; }}
+                    onBlur={(e) => { e.target.style.borderColor = 'var(--input-border)'; e.target.style.boxShadow = 'none'; }}
+                  />
+                </div>
+              ))}
               <div>
-                <label className="block text-sm text-gray-400 mb-2">Your Name</label>
-                <input
-                  type="text"
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  placeholder="John Doe"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#00E5FF]/50 focus:ring-1 focus:ring-[#00E5FF]/50 transition-all"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-gray-400 mb-2">Email Address</label>
-                <input
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  placeholder="john@example.com"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#00E5FF]/50 focus:ring-1 focus:ring-[#00E5FF]/50 transition-all"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-gray-400 mb-2">Message</label>
+                <label className="block text-sm mb-2" style={{ color: 'var(--text-secondary)' }}>Message</label>
                 <textarea
                   required
                   rows={5}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder="Tell me about your project..."
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#00E5FF]/50 focus:ring-1 focus:ring-[#00E5FF]/50 transition-all resize-none"
+                  style={{
+                    width: '100%',
+                    background: 'var(--input-bg)',
+                    border: '1px solid var(--input-border)',
+                    borderRadius: '0.75rem',
+                    padding: '0.75rem 1rem',
+                    fontSize: '0.875rem',
+                    color: 'var(--input-text)',
+                    outline: 'none',
+                    resize: 'none',
+                    transition: 'border-color 0.2s, box-shadow 0.2s',
+                  }}
+                  onFocus={(e) => { e.target.style.borderColor = 'var(--accent)'; e.target.style.boxShadow = '0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent)'; }}
+                  onBlur={(e) => { e.target.style.borderColor = 'var(--input-border)'; e.target.style.boxShadow = 'none'; }}
                 />
               </div>
               <button
@@ -140,10 +157,7 @@ export default function Contact({ profile }) {
                 className="btn-primary w-full inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loading ? (
-                  <>
-                    <span className="w-4 h-4 border-2 border-[#050505]/30 border-t-[#050505] rounded-full animate-spin" />
-                    Sending...
-                  </>
+                  <><span className="w-4 h-4 border-2 rounded-full animate-spin" style={{ borderColor: 'rgba(0,0,0,0.2)', borderTopColor: '#000' }} /> Sending...</>
                 ) : (
                   <><Send size={16} /> Send Message</>
                 )}
