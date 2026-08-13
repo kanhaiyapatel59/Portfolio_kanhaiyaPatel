@@ -101,6 +101,9 @@ export default function Hero({ profile, isLight }) {
         <img
           src={profile.avatar}
           alt={profile.name}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
           className="w-full h-full rounded-3xl"
           style={{ objectFit: 'cover', objectPosition: 'top center', transform: 'translateZ(30px)', transformStyle: 'preserve-3d' }}
         />

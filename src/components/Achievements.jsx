@@ -49,6 +49,8 @@ export default function Achievements({ achievements }) {
                       <img
                         src={item.image}
                         alt={item.title}
+                        loading="lazy"
+                        decoding="async"
                         onClick={() => setLightbox(index)}
                         className="w-full h-36 object-cover rounded-lg mb-4 cursor-pointer hover:opacity-90 transition-opacity"
                       />
@@ -83,7 +85,7 @@ export default function Achievements({ achievements }) {
               className="relative max-w-2xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img src={achievements[lightbox].image} alt="" className="w-full rounded-2xl shadow-2xl" />
+              <img src={achievements[lightbox].image} alt="" loading="lazy" decoding="async" className="w-full rounded-2xl shadow-2xl" />
               <p className="text-center text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
                 {achievements[lightbox].title}
               </p>

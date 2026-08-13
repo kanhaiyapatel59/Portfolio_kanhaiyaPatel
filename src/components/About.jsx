@@ -48,7 +48,7 @@ export default function About({ profile }) {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative aspect-square max-w-md mx-auto w-full">
             <div className="absolute inset-0 rounded-3xl blur-2xl" style={{ background: 'linear-gradient(135deg, var(--orb-cyan), var(--orb-purple))' }} />
             <Tilt3D className="glass-card h-full overflow-hidden rounded-3xl">
-              <img src={profile.avatar} alt={profile.name} className="w-full h-full rounded-3xl" style={{ objectFit: 'cover', objectPosition: 'top center', transform: 'translateZ(30px)', transformStyle: 'preserve-3d' }} />
+              <img src={profile.avatar} alt={profile.name} loading="lazy" decoding="async" className="w-full h-full rounded-3xl" style={{ objectFit: 'cover', objectPosition: 'top center', transform: 'translateZ(30px)', transformStyle: 'preserve-3d' }} />
               <div className="absolute inset-0 rounded-3xl pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(0,229,255,0.08) 0%, transparent 60%)', transform: 'translateZ(40px)' }} />
             </Tilt3D>
           </motion.div>

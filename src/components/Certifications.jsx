@@ -42,6 +42,8 @@ export default function Certifications({ certifications }) {
                     <img
                       src={item.image}
                       alt={item.title}
+                      loading="lazy"
+                      decoding="async"
                       onClick={() => setLightbox(index)}
                       className="w-full h-24 object-contain rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
                       style={{ filter: 'drop-shadow(0 4px 12px rgba(0,229,255,0.2))' }}
@@ -97,7 +99,7 @@ export default function Certifications({ certifications }) {
               className="relative max-w-2xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img src={sorted[lightbox].image} alt="" className="w-full rounded-2xl shadow-2xl" />
+              <img src={sorted[lightbox].image} alt="" loading="lazy" decoding="async" className="w-full rounded-2xl shadow-2xl" />
               <p className="text-center text-sm mt-3" style={{ color: 'var(--text-secondary)' }}>
                 {sorted[lightbox].title} — {sorted[lightbox].provider}
               </p>

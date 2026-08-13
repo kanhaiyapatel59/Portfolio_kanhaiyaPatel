@@ -1,23 +1,31 @@
-// ── Profile avatar — replace src/assets/avatar.png with your actual photo, keep the same filename ──
-import avatar from '../assets/avatar.png';
+// ── Profile avatar — replace src/assets/avatar.webp with your actual photo, keep the same filename ──
+import avatar from '../assets/avatar.webp';
 
 // ── Certification images ──
-import certDataEngineering from '../assets/cert-data-engineering.png';
-import certDesignThinkingNPTEL from '../assets/cert-design-thinking-nptel.png';
-import certCreateathon from '../assets/cert-createathon.jpeg';
-import certIBMSkillbuild from '../assets/cert-ibm-skillbuild.png';
-import certMyGovCybersecurity from '../assets/cert-mygov-cybersecurity.jpg';
-import certJavaUdemy from '../assets/cert-java-udemy.png';
-import certOracleJava from '../assets/cert-oracle-java.png';
-import certSQLAdvanced from '../assets/cert-sql-advanced.png';
-import certInternship from '../assets/cert-internship-better-tomorrow.jpg';
-import certSoftwareEngineering from '../assets/cert-software-engineering.png';
-import certUdemyCpp from '../assets/cert-udemy-cpp.png';
+import certDataEngineering from '../assets/cert-data-engineering.webp';
+import certDesignThinkingNPTEL from '../assets/cert-design-thinking-nptel.webp';
+import certCreateathon from '../assets/cert-createathon.webp';
+import certIBMSkillbuild from '../assets/cert-ibm-skillbuild.webp';
+import certMyGovCybersecurity from '../assets/cert-mygov-cybersecurity.webp';
+import certJavaUdemy from '../assets/cert-java-udemy.webp';
+import certOracleJava from '../assets/cert-oracle-java.webp';
+import certSQLAdvanced from '../assets/cert-sql-advanced.webp';
+import certInternship from '../assets/cert-internship-better-tomorrow.webp';
+import certSoftwareEngineering from '../assets/cert-software-engineering.webp';
+import certUdemyCpp from '../assets/cert-udemy-cpp.webp';
 
 // ── Achievement images ──
-import achievementFreshathon from '../assets/achievement-freshathon.png';
-import achievementMiniProjectExpo from '../assets/achievementMiniProjectExpo.jpeg';
+import achievementFreshathon from '../assets/achievement-freshathon.webp';
+import achievementMiniProjectExpo from '../assets/achievementMiniProjectExpo.webp';
 const achievementAIMLHackathon = null;
+
+// ── Project showcase images ──
+import projectFood from '../assets/project-food.webp';
+import projectAmbulance from '../assets/project-ambulance.webp';
+import projectEvent from '../assets/project-event.webp';
+import projectDisaster from '../assets/project-disaster.webp';
+import projectCrimeLens from '../assets/project-crimelens.webp';
+import projectMediRoute from '../assets/project-mediroute.webp';
 
 const portfolioData = {
   profile: {
@@ -73,7 +81,7 @@ const portfolioData = {
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/food-website',
       liveUrl: 'https://foody-ham-frontend.vercel.app',
-      image: 'https://img.magnific.com/premium-vector/delicious-food-menu-landing-page-template-homepage-design_631465-116.jpg',
+      image: projectFood,
     },
     {
       id: 'p2',
@@ -87,7 +95,7 @@ const portfolioData = {
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/campus-ambulance-tracker',
       liveUrl: '',
-      image: 'https://trinetrawireless.com/wp-content/uploads/2017/12/Emergency-Medical-Services.jpg',
+      image: projectAmbulance,
     },
     {
       id: 'p3',
@@ -101,7 +109,7 @@ const portfolioData = {
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/Event-Registration',
       liveUrl: '',
-      image: 'https://cdn.marketing123.123formbuilder.com/wp-content/uploads/2023/11/event-reg-form-templates.webp',
+      image: projectEvent,
     },
     {
       id: 'p6',
@@ -118,7 +126,7 @@ const portfolioData = {
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/disaster-response-ai',
       liveUrl: '',
-      image: 'https://domesticpreparedness.com/wp-content/uploads/2026/07/AdobeStock_1925196678-WEB.jpg',
+      image: projectDisaster,
     },
     {
       id: 'p5',
@@ -137,7 +145,7 @@ const portfolioData = {
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/CrimeLens',
       liveUrl: 'https://crimelens-frontend-kqiohtrf.onslate.in',
-      image: 'https://www.c-sint.in/home-img.png',
+      image: projectCrimeLens,
     },
     {
       id: 'p4',
@@ -153,7 +161,7 @@ const portfolioData = {
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/MediRoute-ai',
       liveUrl: '',
-      image: 'https://img.magnific.com/free-vector/flat-design-medical-landing-page_23-2149164615.jpg?semt=ais_hybrid&w=740&q=80',
+      image: projectMediRoute,
     },
   ],
 
