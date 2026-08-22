@@ -25,7 +25,7 @@ import projectAmbulance from '../assets/project-ambulance.webp';
 import projectEvent from '../assets/project-event.webp';
 import projectDisaster from '../assets/project-disaster.webp';
 import projectCrimeLens from '../assets/project-crimelens.webp';
-import projectMediRoute from '../assets/project-mediroute.webp';
+const projectSmartCampus = null;
 
 const portfolioData = {
   profile: {
@@ -149,19 +149,19 @@ const portfolioData = {
     },
     {
       id: 'p4',
-      title: 'MediRoute AI',
-      description: 'An AI-powered emergency healthcare platform that helps users quickly locate nearby hospitals, find optimal routes, and receive intelligent medical assistance during emergencies.',
-      techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Google Maps API', 'Gemini AI'],
+      title: 'Smart Campus Service Request System',
+      description: 'An enterprise-grade digital solution for managing campus maintenance and support services, enabling seamless request submission, technician dispatch, real-time tracking, and performance analytics.',
+      techStack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'JWT'],
       highlights: [
-        'Developed an AI-powered platform to locate nearby hospitals and provide the fastest emergency route.',
-        'Integrated Google Maps API for real-time navigation, distance calculation, and location-based hospital search.',
-        'Implemented secure user authentication, emergency request management, and a scalable REST API backend with MongoDB.',
-        'Integrated Gemini AI to provide intelligent medical guidance, symptom assistance, and emergency support.',
-        'Designed a responsive and user-friendly interface optimized for both desktop and mobile devices.',
+        'Built a complete service request management system with role-based access control (Student, Faculty, Admin, Technician) and secure JWT authentication.',
+        'Implemented an enterprise ticket closure workflow featuring user confirmation (Accept/Reject resolution), full audit timeline, and reopen tracking.',
+        'Integrated Socket.IO for real-time request status updates and instant notifications across all user roles.',
+        'Developed an admin analytics dashboard to track technician performance metrics, SLA compliance, average resolution times, and success rates.',
+        'Designed a modern, responsive UI supporting file uploads (proof of work), priority levels, and category-based request routing.',
       ],
-      githubUrl: 'https://github.com/kanhaiyapatel59/MediRoute-ai',
+      githubUrl: 'https://github.com/kanhaiyapatel59/smartcampus',
       liveUrl: '',
-      image: projectMediRoute,
+      image: projectSmartCampus,
     },
   ],
 
