@@ -161,7 +161,7 @@ const portfolioData = {
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/smartcampus',
       liveUrl: 'https://smartcampus-ps7am1wip-kanhaiyapatel59s-projects.vercel.app',
-      image: smartcampus,
+      image: projectSmartCampus,
     },
   ],
 
