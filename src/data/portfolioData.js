@@ -25,7 +25,7 @@ import projectAmbulance from '../assets/project-ambulance.webp';
 import projectEvent from '../assets/project-event.webp';
 import projectDisaster from '../assets/project-disaster.webp';
 import projectCrimeLens from '../assets/project-crimelens.webp';
-const projectSmartCampus = null;
+import projectSmartCampus from '../assets/smartcampus.jpeg';
 
 const portfolioData = {
   profile: {
@@ -161,7 +161,7 @@ const portfolioData = {
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/smartcampus',
       liveUrl: 'https://smartcampus-ps7am1wip-kanhaiyapatel59s-projects.vercel.app',
-      image: projectSmartCampus,
+      image: smartcampus,
     },
   ],
 
