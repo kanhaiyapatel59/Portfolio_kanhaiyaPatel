@@ -160,7 +160,7 @@ const portfolioData = {
         'Designed a modern, responsive UI supporting file uploads (proof of work), priority levels, and category-based request routing.',
       ],
       githubUrl: 'https://github.com/kanhaiyapatel59/smartcampus',
-      liveUrl: '',
+      liveUrl: 'https://smartcampus-ps7am1wip-kanhaiyapatel59s-projects.vercel.app',
       image: projectSmartCampus,
     },
   ],
