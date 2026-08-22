@@ -70,20 +70,6 @@ const portfolioData = {
 
   projects: [
     {
-      id: 'p1',
-      title: 'Online Food Ordering System',
-      description: 'A full-stack food delivery platform with secure authentication and real-time order management.',
-      techStack: ['React', 'Node.js', 'Express.js', 'JWT Authentication', 'MongoDB'],
-      highlights: [
-        'Built a full-stack food ordering application with secure JWT authentication and role-based user access.',
-        'Developed real-time order tracking and an admin dashboard to manage users, orders, and analytics.',
-        'Designed a responsive, user-friendly interface for seamless food browsing, ordering, and order management.',
-      ],
-      githubUrl: 'https://github.com/kanhaiyapatel59/food-website',
-      liveUrl: 'https://foody-ham-frontend.vercel.app',
-      image: projectFood,
-    },
-    {
       id: 'p2',
       title: 'Campus Ambulance Tracker',
       description: 'A web-based emergency response system for faster ambulance dispatch and real-time request management.',
@@ -146,6 +132,20 @@ const portfolioData = {
       githubUrl: 'https://github.com/kanhaiyapatel59/CrimeLens',
       liveUrl: 'https://crimelens-frontend-kqiohtrf.onslate.in',
       image: projectCrimeLens,
+    },
+    {
+      id: 'p1',
+      title: 'Online Food Ordering System',
+      description: 'A full-stack food delivery platform with secure authentication and real-time order management.',
+      techStack: ['React', 'Node.js', 'Express.js', 'JWT Authentication', 'MongoDB'],
+      highlights: [
+        'Built a full-stack food ordering application with secure JWT authentication and role-based user access.',
+        'Developed real-time order tracking and an admin dashboard to manage users, orders, and analytics.',
+        'Designed a responsive, user-friendly interface for seamless food browsing, ordering, and order management.',
+      ],
+      githubUrl: 'https://github.com/kanhaiyapatel59/food-website',
+      liveUrl: 'https://foody-ham-frontend.vercel.app',
+      image: projectFood,
     },
     {
       id: 'p4',
