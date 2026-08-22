@@ -110,8 +110,8 @@ const portfolioData = {
         'Implemented MongoDB for persistent storage of all incident analyses with complete history tracking and reporting.',
         'Built professional incident report generation with executive summaries, recommended actions, and multi-channel alerts (SMS, Email, Control Room).',
       ],
-      githubUrl: 'https://github.com/kanhaiyapatel59/disaster-response-ai',
-      liveUrl: '',
+      githubUrl: 'https://github.com/kanhaiyapatel59/ANTIVERSE',
+      liveUrl: 'https://antiverse-one.vercel.app',
       image: projectDisaster,
     },
     {
